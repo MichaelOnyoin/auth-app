@@ -1,0 +1,238 @@
+//Download fingerprint library
+npm i react-native-fingerprint-scanner
+
+In the AndroidManifest.xml, add this permission:
+<uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+In the Info.plist add this key and string:
+
+<key>NSFaceIDUsageDescription</key>
+<string>$(App_Name) requires FaceID access to allows you quick and secure access.</string>
+
+FingerprintScanner.authenticate({description: 'Scan your fingerprint on the device scanner to continue'})
+            .then(() =>  {
+               //you can write your logic here for what will happen on successfull authentication
+               }).catch((error) => {
+                console.log('Authentication error is => ',error)
+            }); }
+
+FingerprintScanner.isSensorAvailable()
+This function checks if a Fingerprint Scanner is able to be used or not.
+FingerprintScanner
+    .isSensorAvailable()
+    .then(biometryType => {
+    console.log('biometryType is => ',biometryType)
+    }
+    ).catch(error => console.log('isSensorAvailable error => ',error));
+
+Putting It All Together
+import React, {Component} from 'react';
+import {Text, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
+export default class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      biometryType: null,
+    };
+  }
+  componentDidMount() {
+    FingerprintScanner.isSensorAvailable()
+      .then((biometryType) => {
+        this.setState({biometryType});
+      })
+      .catch((error) => console.log('isSensorAvailable error => ', error));
+  }
+  
+  getMessage=()=>{
+  const {biometryType}=this.state;
+    if(biometryType=='Face ID')
+    {
+      return 'Scan your Face on the device to continue'
+    }
+    else
+    {
+      return 'Scan your Fingerprint on the device scanner to continue'
+    }
+  }
+
+  showAuthenticationDialog = () => {
+    const {biometryType}=this.state;
+    if(biometryType!==null && biometryType!==undefined )
+    {
+    FingerprintScanner.authenticate({
+      description: this.getMessage()
+    })
+      .then(() => {
+        //you can write your logic here to what will happen on successful authentication
+      })
+      .catch((error) => {
+        console.log('Authentication error is => ', error);
+      });
+    }
+    else
+    {
+    console.log('biometric authentication is not available');
+    }
+  };
+
+  render() {
+    const {biometryType}=this.state;
+    return (
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={this.showAuthenticationDialog()}>
+          <Text style={styles.textStyle}>Authenticate</Text>
+        </TouchableOpacity>
+        <Text
+          style={
+            styles.biometryText
+          }>{`biometryType is  ${biometryType}`}</Text>
+      </SafeAreaView>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonStyle: {
+    width: '70%',
+    backgroundColor: '#000',
+    borderRadius: 25,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {color: '#fff', fontSize: 17, fontWeight: 'bold'},
+  biometryText: {
+    color: '#000',
+    fontSize: 17,
+    fontWeight: 'bold',
+    marginTop: 30,
+  },
+});
+
+
+
+class RegistrationPage extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            fullNames: '',
+            voterId: '',
+            nationalId: '',
+            constituency: '',
+            registrationCenter: ''
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleSubmit(event) {
+        alert('A new user was registered: ' + this.state.fullNames);
+        event.preventDefault();
+    }
+     loadAccounts = async () => {
+        let { register, accounts } = await loadBlockchainData();
+    
+        setAccounts(accounts);
+        setRegister(register);
+        await register.methods
+		.registerVoter(fullnames, voterId, nationalId,constituency,registrationCenter)
+		.send({ from: accounts });
+    };
+    
+    
+    
+
+    render() {
+        return (
+            <Container>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+                        <img  src="https://i.postimg.cc/Hnmyyk4N/logo.png" style={image}>
+                           
+                        </img>
+                        <h1>Registration Page</h1>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group controlId="fullNames">
+                                <Form.Label>Full Names</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    name="fullNames" 
+                                    value={this.state.fullNames} 
+                                    onChange={this.handleChange} 
+                                    required 
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="voterId">
+                                <Form.Label>Voter ID</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    name="voterId" 
+                                    value={this.state.voterId} 
+                                    onChange={this.handleChange} 
+                                    required 
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="nationalId">
+                                <Form.Label>National ID</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    name="nationalId" 
+                                    value={this.state.nationalId} 
+                                    onChange={this.handleChange} 
+                                    required 
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="constituency">
+                                <Form.Label>Constituency</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    name="constituency" 
+                                    value={this.state.constituency} 
+                                    onChange={this.handleChange} 
+                                    required 
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="registrationCenter">
+                                <Form.Label>Registration Center</Form.Label>
+                                <Form.Control 
+                                    type="text" 
+                                    name="registrationCenter" 
+                                    value={this.state.registrationCenter} 
+                                    onChange={this.handleChange} 
+                                    required 
+                                />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit">
+                                Register
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
+}
+
+
+    
+    

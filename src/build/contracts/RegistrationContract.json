@@ -1,0 +1,2089 @@
+{
+  "contractName": "RegistrationContract",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "registrationId",
+          "type": "uint256"
+        }
+      ],
+      "name": "RegistrationAdded",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "registrationCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "registrations",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "fullNames",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "voterId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "nationalId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "constituency",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "registrationCenter",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_fullNames",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_voterId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_nationalId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_constituency",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_registrationCenter",
+          "type": "string"
+        }
+      ],
+      "name": "registerVoter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"registrationId\",\"type\":\"uint256\"}],\"name\":\"RegistrationAdded\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_fullNames\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_voterId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_nationalId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_constituency\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_registrationCenter\",\"type\":\"string\"}],\"name\":\"registerVoter\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"registrationCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"registrations\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"fullNames\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"voterId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"nationalId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"constituency\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"registrationCenter\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/RegistrationContract.sol\":\"RegistrationContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/RegistrationContract.sol\":{\"keccak256\":\"0x485c8e68953efe3ab15b92cc01b3e139650f7c06281b861a094764c16059b3ef\",\"urls\":[\"bzz-raw://466b058262aee76b99cc6dc263a4b438a07176b319a011acc7f3eca4639808a8\",\"dweb:/ipfs/QmQHCjdTiyrNB9VRnRfH4dxRGLH2cgwUWkPR7pvE8rgveT\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506109c3806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80630d3eafd6146100465780635ed5d2c314610060578063f4ddb5be1461031a575b600080fd5b61004e610547565b60408051918252519081900360200190f35b610318600480360360a081101561007657600080fd5b810190602081018135600160201b81111561009057600080fd5b8201836020820111156100a257600080fd5b803590602001918460018302840111600160201b831117156100c357600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561011557600080fd5b82018360208201111561012757600080fd5b803590602001918460018302840111600160201b8311171561014857600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561019a57600080fd5b8201836020820111156101ac57600080fd5b803590602001918460018302840111600160201b831117156101cd57600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561021f57600080fd5b82018360208201111561023157600080fd5b803590602001918460018302840111600160201b8311171561025257600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b8111156102a457600080fd5b8201836020820111156102b657600080fd5b803590602001918460018302840111600160201b831117156102d757600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955061054d945050505050565b005b6103376004803603602081101561033057600080fd5b5035610605565b60405180806020018060200180602001806020018060200186810386528b818151815260200191508051906020019080838360005b8381101561038457818101518382015260200161036c565b50505050905090810190601f1680156103b15780820380516001836020036101000a031916815260200191505b5086810385528a5181528a516020918201918c019080838360005b838110156103e45781810151838201526020016103cc565b50505050905090810190601f1680156104115780820380516001836020036101000a031916815260200191505b5086810384528951815289516020918201918b019080838360005b8381101561044457818101518382015260200161042c565b50505050905090810190601f1680156104715780820380516001836020036101000a031916815260200191505b5086810383528851815288516020918201918a019080838360005b838110156104a457818101518382015260200161048c565b50505050905090810190601f1680156104d15780820380516001836020036101000a031916815260200191505b50868103825287518152875160209182019189019080838360005b838110156105045781810151838201526020016104ec565b50505050905090810190601f1680156105315780820380516001836020036101000a031916815260200191505b509a505050505050505050505060405180910390f35b60015481565b60018054810190819055600090815260208181526040909120865190916105789183918901906108f3565b50845161058e90600183019060208801906108f3565b5083516105a490600283019060208701906108f3565b5082516105ba90600383019060208601906108f3565b5081516105d090600483019060208501906108f3565b506001546040517fba437519e1aab3c2fb420de81c2a6ff5045a066027ae76a9afce558ab0acacea90600090a2505050505050565b6000602081815291815260409081902080548251601f6002600019610100600186161502019093169290920491820185900485028101850190935280835290928391908301828280156106995780601f1061066e57610100808354040283529160200191610699565b820191906000526020600020905b81548152906001019060200180831161067c57829003601f168201915b505050505090806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107375780601f1061070c57610100808354040283529160200191610737565b820191906000526020600020905b81548152906001019060200180831161071a57829003601f168201915b50505060028085018054604080516020601f60001961010060018716150201909416959095049283018590048502810185019091528181529596959450909250908301828280156107c95780601f1061079e576101008083540402835291602001916107c9565b820191906000526020600020905b8154815290600101906020018083116107ac57829003601f168201915b5050505060038301805460408051602060026001851615610100026000190190941693909304601f81018490048402820184019092528181529495949350908301828280156108595780601f1061082e57610100808354040283529160200191610859565b820191906000526020600020905b81548152906001019060200180831161083c57829003601f168201915b5050505060048301805460408051602060026001851615610100026000190190941693909304601f81018490048402820184019092528181529495949350908301828280156108e95780601f106108be576101008083540402835291602001916108e9565b820191906000526020600020905b8154815290600101906020018083116108cc57829003601f168201915b5050505050905085565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061093457805160ff1916838001178555610961565b82800160010185558215610961579182015b82811115610961578251825591602001919060010190610946565b5061096d929150610971565b5090565b61098b91905b8082111561096d5760008155600101610977565b9056fea265627a7a723158206113a469e66d33e940b6a9f376d29f204ad0fb182d4df716e825f7f1b0f8d4e264736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80630d3eafd6146100465780635ed5d2c314610060578063f4ddb5be1461031a575b600080fd5b61004e610547565b60408051918252519081900360200190f35b610318600480360360a081101561007657600080fd5b810190602081018135600160201b81111561009057600080fd5b8201836020820111156100a257600080fd5b803590602001918460018302840111600160201b831117156100c357600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561011557600080fd5b82018360208201111561012757600080fd5b803590602001918460018302840111600160201b8311171561014857600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561019a57600080fd5b8201836020820111156101ac57600080fd5b803590602001918460018302840111600160201b831117156101cd57600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b81111561021f57600080fd5b82018360208201111561023157600080fd5b803590602001918460018302840111600160201b8311171561025257600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295949360208101935035915050600160201b8111156102a457600080fd5b8201836020820111156102b657600080fd5b803590602001918460018302840111600160201b831117156102d757600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955061054d945050505050565b005b6103376004803603602081101561033057600080fd5b5035610605565b60405180806020018060200180602001806020018060200186810386528b818151815260200191508051906020019080838360005b8381101561038457818101518382015260200161036c565b50505050905090810190601f1680156103b15780820380516001836020036101000a031916815260200191505b5086810385528a5181528a516020918201918c019080838360005b838110156103e45781810151838201526020016103cc565b50505050905090810190601f1680156104115780820380516001836020036101000a031916815260200191505b5086810384528951815289516020918201918b019080838360005b8381101561044457818101518382015260200161042c565b50505050905090810190601f1680156104715780820380516001836020036101000a031916815260200191505b5086810383528851815288516020918201918a019080838360005b838110156104a457818101518382015260200161048c565b50505050905090810190601f1680156104d15780820380516001836020036101000a031916815260200191505b50868103825287518152875160209182019189019080838360005b838110156105045781810151838201526020016104ec565b50505050905090810190601f1680156105315780820380516001836020036101000a031916815260200191505b509a505050505050505050505060405180910390f35b60015481565b60018054810190819055600090815260208181526040909120865190916105789183918901906108f3565b50845161058e90600183019060208801906108f3565b5083516105a490600283019060208701906108f3565b5082516105ba90600383019060208601906108f3565b5081516105d090600483019060208501906108f3565b506001546040517fba437519e1aab3c2fb420de81c2a6ff5045a066027ae76a9afce558ab0acacea90600090a2505050505050565b6000602081815291815260409081902080548251601f6002600019610100600186161502019093169290920491820185900485028101850190935280835290928391908301828280156106995780601f1061066e57610100808354040283529160200191610699565b820191906000526020600020905b81548152906001019060200180831161067c57829003601f168201915b505050505090806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107375780601f1061070c57610100808354040283529160200191610737565b820191906000526020600020905b81548152906001019060200180831161071a57829003601f168201915b50505060028085018054604080516020601f60001961010060018716150201909416959095049283018590048502810185019091528181529596959450909250908301828280156107c95780601f1061079e576101008083540402835291602001916107c9565b820191906000526020600020905b8154815290600101906020018083116107ac57829003601f168201915b5050505060038301805460408051602060026001851615610100026000190190941693909304601f81018490048402820184019092528181529495949350908301828280156108595780601f1061082e57610100808354040283529160200191610859565b820191906000526020600020905b81548152906001019060200180831161083c57829003601f168201915b5050505060048301805460408051602060026001851615610100026000190190941693909304601f81018490048402820184019092528181529495949350908301828280156108e95780601f106108be576101008083540402835291602001916108e9565b820191906000526020600020905b8154815290600101906020018083116108cc57829003601f168201915b5050505050905085565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061093457805160ff1916838001178555610961565b82800160010185558215610961579182015b82811115610961578251825591602001919060010190610946565b5061096d929150610971565b5090565b61098b91905b8082111561096d5760008155600101610977565b9056fea265627a7a723158206113a469e66d33e940b6a9f376d29f204ad0fb182d4df716e825f7f1b0f8d4e264736f6c63430005100032",
+  "sourceMap": "69:1063:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;69:1063:2;;;;;;;",
+  "deployedSourceMap": "69:1063:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;69:1063:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;356:32;;;:::i;:::-;;;;;;;;;;;;;;;;461:668;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;461:668:2;;;;;;;;-1:-1:-1;;;5:28;;2:2;;;46:1;43;36:12;2:2;461:668:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;461:668:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;-1:-1;;;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;461:668:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;461:668:2;;;;;;;;-1:-1:-1;461:668:2;;-1:-1:-1;;;;;5:28;;2:2;;;46:1;43;36:12;2:2;461:668:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;461:668:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;-1:-1;;;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;461:668:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;461:668:2;;;;;;;;-1:-1:-1;461:668:2;;-1:-1:-1;;;;;5:28;;2:2;;;46:1;43;36:12;2:2;461:668:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;461:668:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;-1:-1;;;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;461:668:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;461:668:2;;;;;;;;-1:-1:-1;461:668:2;;-1:-1:-1;;;;;5:28;;2:2;;;46:1;43;36:12;2:2;461:668:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;461:668:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;-1:-1;;;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;461:668:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;461:668:2;;;;;;;;-1:-1:-1;461:668:2;;-1:-1:-1;;;;;5:28;;2:2;;;46:1;43;36:12;2:2;461:668:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;461:668:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;-1:-1;;;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;461:668:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;461:668:2;;-1:-1:-1;461:668:2;;-1:-1:-1;;;;;461:668:2:i;:::-;;292:57;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;292:57:2;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;356:32;;;;:::o;461:668::-;695:17;:19;;;;;;;;:17;768:32;;;;;;;;;;;811:38;;768:32;;811:38;;768:32;;811:38;;;;:::i;:::-;-1:-1:-1;860:34:2;;;;:23;;;;:34;;;;;:::i;:::-;-1:-1:-1;905:40:2;;;;:26;;;;:40;;;;;:::i;:::-;-1:-1:-1;956:44:2;;;;:28;;;;:44;;;;;:::i;:::-;-1:-1:-1;1011:56:2;;;;:34;;;;:56;;;;;:::i;:::-;-1:-1:-1;1103:17:2;;1085:36;;;;;;;461:668;;;;;;:::o;292:57::-;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;292:57:2;;;;;;;;;;;-1:-1:-1;;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;292:57:2;;;;;;;;;;;;;;;;-1:-1:-1;;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;292:57:2;;;;;;;;;;;;;;;;-1:-1:-1;;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;292:57:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;69:1063::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;69:1063:2;;;-1:-1:-1;69:1063:2;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity >=0.4.22 <0.9.0;\r\n\r\ncontract RegistrationContract {\r\n    struct RegistrationData {\r\n        string fullNames;\r\n        string voterId;\r\n        string nationalId;\r\n        string constituency;\r\n        string registrationCenter;\r\n    }\r\n\r\n    mapping(uint256 => RegistrationData) public registrations;\r\n    uint256 public registrationCount;\r\n\r\n    event RegistrationAdded(uint256 indexed registrationId);\r\n\r\n    function registerVoter(\r\n        string memory _fullNames,\r\n        string memory _voterId,\r\n        string memory _nationalId,\r\n        string memory _constituency,\r\n        string memory _registrationCenter\r\n    ) public {\r\n        registrationCount++;\r\n        RegistrationData storage newRegistration = registrations[registrationCount];\r\n        newRegistration.fullNames = _fullNames;\r\n        newRegistration.voterId = _voterId;\r\n        newRegistration.nationalId = _nationalId;\r\n        newRegistration.constituency = _constituency;\r\n        newRegistration.registrationCenter = _registrationCenter;\r\n\r\n        emit RegistrationAdded(registrationCount);\r\n    }\r\n}",
+  "sourcePath": "D:\\auth-app\\src\\contracts\\RegistrationContract.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/RegistrationContract.sol",
+    "exportedSymbols": {
+      "RegistrationContract": [
+        191
+      ]
+    },
+    "id": 192,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 112,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:32:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 191,
+        "linearizedBaseContracts": [
+          191
+        ],
+        "name": "RegistrationContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "RegistrationContract.RegistrationData",
+            "id": 123,
+            "members": [
+              {
+                "constant": false,
+                "id": 114,
+                "name": "fullNames",
+                "nodeType": "VariableDeclaration",
+                "scope": 123,
+                "src": "141:16:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 113,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "141:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 116,
+                "name": "voterId",
+                "nodeType": "VariableDeclaration",
+                "scope": 123,
+                "src": "168:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 115,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "168:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 118,
+                "name": "nationalId",
+                "nodeType": "VariableDeclaration",
+                "scope": 123,
+                "src": "193:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 117,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "193:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 120,
+                "name": "constituency",
+                "nodeType": "VariableDeclaration",
+                "scope": 123,
+                "src": "221:19:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 119,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "221:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 122,
+                "name": "registrationCenter",
+                "nodeType": "VariableDeclaration",
+                "scope": 123,
+                "src": "251:25:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 121,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "251:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "RegistrationData",
+            "nodeType": "StructDefinition",
+            "scope": 191,
+            "src": "106:178:2",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 127,
+            "name": "registrations",
+            "nodeType": "VariableDeclaration",
+            "scope": 191,
+            "src": "292:57:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_RegistrationData_$123_storage_$",
+              "typeString": "mapping(uint256 => struct RegistrationContract.RegistrationData)"
+            },
+            "typeName": {
+              "id": 126,
+              "keyType": {
+                "id": 124,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "300:7:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "292:36:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_RegistrationData_$123_storage_$",
+                "typeString": "mapping(uint256 => struct RegistrationContract.RegistrationData)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 125,
+                "name": "RegistrationData",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 123,
+                "src": "311:16:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                  "typeString": "struct RegistrationContract.RegistrationData"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 129,
+            "name": "registrationCount",
+            "nodeType": "VariableDeclaration",
+            "scope": 191,
+            "src": "356:32:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 128,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "356:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 133,
+            "name": "RegistrationAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 131,
+                  "indexed": true,
+                  "name": "registrationId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 133,
+                  "src": "421:30:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 130,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "421:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "420:32:2"
+            },
+            "src": "397:56:2"
+          },
+          {
+            "body": {
+              "id": 189,
+              "nodeType": "Block",
+              "src": "684:445:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 147,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "695:19:2",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 146,
+                      "name": "registrationCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 129,
+                      "src": "695:17:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 148,
+                  "nodeType": "ExpressionStatement",
+                  "src": "695:19:2"
+                },
+                {
+                  "assignments": [
+                    150
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 150,
+                      "name": "newRegistration",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 189,
+                      "src": "725:40:2",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                        "typeString": "struct RegistrationContract.RegistrationData"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 149,
+                        "name": "RegistrationData",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 123,
+                        "src": "725:16:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 154,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 151,
+                      "name": "registrations",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 127,
+                      "src": "768:13:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_RegistrationData_$123_storage_$",
+                        "typeString": "mapping(uint256 => struct RegistrationContract.RegistrationData storage ref)"
+                      }
+                    },
+                    "id": 153,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 152,
+                      "name": "registrationCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 129,
+                      "src": "782:17:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "768:32:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RegistrationData_$123_storage",
+                      "typeString": "struct RegistrationContract.RegistrationData storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "725:75:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 159,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 155,
+                        "name": "newRegistration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 150,
+                        "src": "811:15:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData storage pointer"
+                        }
+                      },
+                      "id": 157,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "fullNames",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 114,
+                      "src": "811:25:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 158,
+                      "name": "_fullNames",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 135,
+                      "src": "839:10:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "811:38:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 160,
+                  "nodeType": "ExpressionStatement",
+                  "src": "811:38:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 165,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 161,
+                        "name": "newRegistration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 150,
+                        "src": "860:15:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData storage pointer"
+                        }
+                      },
+                      "id": 163,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "voterId",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 116,
+                      "src": "860:23:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 164,
+                      "name": "_voterId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 137,
+                      "src": "886:8:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "860:34:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 166,
+                  "nodeType": "ExpressionStatement",
+                  "src": "860:34:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 171,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 167,
+                        "name": "newRegistration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 150,
+                        "src": "905:15:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData storage pointer"
+                        }
+                      },
+                      "id": 169,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "nationalId",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 118,
+                      "src": "905:26:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 170,
+                      "name": "_nationalId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 139,
+                      "src": "934:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "905:40:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 172,
+                  "nodeType": "ExpressionStatement",
+                  "src": "905:40:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 177,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 173,
+                        "name": "newRegistration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 150,
+                        "src": "956:15:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData storage pointer"
+                        }
+                      },
+                      "id": 175,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "constituency",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 120,
+                      "src": "956:28:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 176,
+                      "name": "_constituency",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 141,
+                      "src": "987:13:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "956:44:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 178,
+                  "nodeType": "ExpressionStatement",
+                  "src": "956:44:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 183,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 179,
+                        "name": "newRegistration",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 150,
+                        "src": "1011:15:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RegistrationData_$123_storage_ptr",
+                          "typeString": "struct RegistrationContract.RegistrationData storage pointer"
+                        }
+                      },
+                      "id": 181,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "registrationCenter",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 122,
+                      "src": "1011:34:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 182,
+                      "name": "_registrationCenter",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 143,
+                      "src": "1048:19:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "1011:56:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 184,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1011:56:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 186,
+                        "name": "registrationCount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 129,
+                        "src": "1103:17:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 185,
+                      "name": "RegistrationAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 133,
+                      "src": "1085:17:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 187,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1085:36:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 188,
+                  "nodeType": "EmitStatement",
+                  "src": "1080:41:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 190,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerVoter",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 144,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 135,
+                  "name": "_fullNames",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 190,
+                  "src": "494:24:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 134,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "494:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 137,
+                  "name": "_voterId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 190,
+                  "src": "529:22:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 136,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 139,
+                  "name": "_nationalId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 190,
+                  "src": "562:25:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 138,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "562:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 141,
+                  "name": "_constituency",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 190,
+                  "src": "598:27:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 140,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "598:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 143,
+                  "name": "_registrationCenter",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 190,
+                  "src": "636:33:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 142,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "636:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "483:193:2"
+            },
+            "returnParameters": {
+              "id": 145,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "684:0:2"
+            },
+            "scope": 191,
+            "src": "461:668:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 192,
+        "src": "69:1063:2"
+      }
+    ],
+    "src": "33:1099:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/RegistrationContract.sol",
+      "exportedSymbols": {
+        "RegistrationContract": [
+          191
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 112,
+        "name": "PragmaDirective",
+        "src": "33:32:2"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            191
+          ],
+          "name": "RegistrationContract",
+          "scope": 192
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "RegistrationContract.RegistrationData",
+              "name": "RegistrationData",
+              "scope": 191,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "fullNames",
+                  "scope": 123,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 113,
+                    "name": "ElementaryTypeName",
+                    "src": "141:6:2"
+                  }
+                ],
+                "id": 114,
+                "name": "VariableDeclaration",
+                "src": "141:16:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "voterId",
+                  "scope": 123,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 115,
+                    "name": "ElementaryTypeName",
+                    "src": "168:6:2"
+                  }
+                ],
+                "id": 116,
+                "name": "VariableDeclaration",
+                "src": "168:14:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "nationalId",
+                  "scope": 123,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 117,
+                    "name": "ElementaryTypeName",
+                    "src": "193:6:2"
+                  }
+                ],
+                "id": 118,
+                "name": "VariableDeclaration",
+                "src": "193:17:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "constituency",
+                  "scope": 123,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 119,
+                    "name": "ElementaryTypeName",
+                    "src": "221:6:2"
+                  }
+                ],
+                "id": 120,
+                "name": "VariableDeclaration",
+                "src": "221:19:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "registrationCenter",
+                  "scope": 123,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 121,
+                    "name": "ElementaryTypeName",
+                    "src": "251:6:2"
+                  }
+                ],
+                "id": 122,
+                "name": "VariableDeclaration",
+                "src": "251:25:2"
+              }
+            ],
+            "id": 123,
+            "name": "StructDefinition",
+            "src": "106:178:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "registrations",
+              "scope": 191,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(uint256 => struct RegistrationContract.RegistrationData)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(uint256 => struct RegistrationContract.RegistrationData)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 124,
+                    "name": "ElementaryTypeName",
+                    "src": "300:7:2"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "RegistrationData",
+                      "referencedDeclaration": 123,
+                      "type": "struct RegistrationContract.RegistrationData"
+                    },
+                    "id": 125,
+                    "name": "UserDefinedTypeName",
+                    "src": "311:16:2"
+                  }
+                ],
+                "id": 126,
+                "name": "Mapping",
+                "src": "292:36:2"
+              }
+            ],
+            "id": 127,
+            "name": "VariableDeclaration",
+            "src": "292:57:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "registrationCount",
+              "scope": 191,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 128,
+                "name": "ElementaryTypeName",
+                "src": "356:7:2"
+              }
+            ],
+            "id": 129,
+            "name": "VariableDeclaration",
+            "src": "356:32:2"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "RegistrationAdded"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "registrationId",
+                      "scope": 133,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 130,
+                        "name": "ElementaryTypeName",
+                        "src": "421:7:2"
+                      }
+                    ],
+                    "id": 131,
+                    "name": "VariableDeclaration",
+                    "src": "421:30:2"
+                  }
+                ],
+                "id": 132,
+                "name": "ParameterList",
+                "src": "420:32:2"
+              }
+            ],
+            "id": 133,
+            "name": "EventDefinition",
+            "src": "397:56:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "registerVoter",
+              "scope": 191,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_fullNames",
+                      "scope": 190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 134,
+                        "name": "ElementaryTypeName",
+                        "src": "494:6:2"
+                      }
+                    ],
+                    "id": 135,
+                    "name": "VariableDeclaration",
+                    "src": "494:24:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_voterId",
+                      "scope": 190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 136,
+                        "name": "ElementaryTypeName",
+                        "src": "529:6:2"
+                      }
+                    ],
+                    "id": 137,
+                    "name": "VariableDeclaration",
+                    "src": "529:22:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_nationalId",
+                      "scope": 190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 138,
+                        "name": "ElementaryTypeName",
+                        "src": "562:6:2"
+                      }
+                    ],
+                    "id": 139,
+                    "name": "VariableDeclaration",
+                    "src": "562:25:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_constituency",
+                      "scope": 190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 140,
+                        "name": "ElementaryTypeName",
+                        "src": "598:6:2"
+                      }
+                    ],
+                    "id": 141,
+                    "name": "VariableDeclaration",
+                    "src": "598:27:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_registrationCenter",
+                      "scope": 190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 142,
+                        "name": "ElementaryTypeName",
+                        "src": "636:6:2"
+                      }
+                    ],
+                    "id": 143,
+                    "name": "VariableDeclaration",
+                    "src": "636:33:2"
+                  }
+                ],
+                "id": 144,
+                "name": "ParameterList",
+                "src": "483:193:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 145,
+                "name": "ParameterList",
+                "src": "684:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "++",
+                          "prefix": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 129,
+                              "type": "uint256",
+                              "value": "registrationCount"
+                            },
+                            "id": 146,
+                            "name": "Identifier",
+                            "src": "695:17:2"
+                          }
+                        ],
+                        "id": 147,
+                        "name": "UnaryOperation",
+                        "src": "695:19:2"
+                      }
+                    ],
+                    "id": 148,
+                    "name": "ExpressionStatement",
+                    "src": "695:19:2"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        150
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "newRegistration",
+                          "scope": 189,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct RegistrationContract.RegistrationData",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "RegistrationData",
+                              "referencedDeclaration": 123,
+                              "type": "struct RegistrationContract.RegistrationData"
+                            },
+                            "id": 149,
+                            "name": "UserDefinedTypeName",
+                            "src": "725:16:2"
+                          }
+                        ],
+                        "id": 150,
+                        "name": "VariableDeclaration",
+                        "src": "725:40:2"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct RegistrationContract.RegistrationData storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 127,
+                              "type": "mapping(uint256 => struct RegistrationContract.RegistrationData storage ref)",
+                              "value": "registrations"
+                            },
+                            "id": 151,
+                            "name": "Identifier",
+                            "src": "768:13:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 129,
+                              "type": "uint256",
+                              "value": "registrationCount"
+                            },
+                            "id": 152,
+                            "name": "Identifier",
+                            "src": "782:17:2"
+                          }
+                        ],
+                        "id": 153,
+                        "name": "IndexAccess",
+                        "src": "768:32:2"
+                      }
+                    ],
+                    "id": 154,
+                    "name": "VariableDeclarationStatement",
+                    "src": "725:75:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "fullNames",
+                              "referencedDeclaration": 114,
+                              "type": "string storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 150,
+                                  "type": "struct RegistrationContract.RegistrationData storage pointer",
+                                  "value": "newRegistration"
+                                },
+                                "id": 155,
+                                "name": "Identifier",
+                                "src": "811:15:2"
+                              }
+                            ],
+                            "id": 157,
+                            "name": "MemberAccess",
+                            "src": "811:25:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 135,
+                              "type": "string memory",
+                              "value": "_fullNames"
+                            },
+                            "id": 158,
+                            "name": "Identifier",
+                            "src": "839:10:2"
+                          }
+                        ],
+                        "id": 159,
+                        "name": "Assignment",
+                        "src": "811:38:2"
+                      }
+                    ],
+                    "id": 160,
+                    "name": "ExpressionStatement",
+                    "src": "811:38:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "voterId",
+                              "referencedDeclaration": 116,
+                              "type": "string storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 150,
+                                  "type": "struct RegistrationContract.RegistrationData storage pointer",
+                                  "value": "newRegistration"
+                                },
+                                "id": 161,
+                                "name": "Identifier",
+                                "src": "860:15:2"
+                              }
+                            ],
+                            "id": 163,
+                            "name": "MemberAccess",
+                            "src": "860:23:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 137,
+                              "type": "string memory",
+                              "value": "_voterId"
+                            },
+                            "id": 164,
+                            "name": "Identifier",
+                            "src": "886:8:2"
+                          }
+                        ],
+                        "id": 165,
+                        "name": "Assignment",
+                        "src": "860:34:2"
+                      }
+                    ],
+                    "id": 166,
+                    "name": "ExpressionStatement",
+                    "src": "860:34:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "nationalId",
+                              "referencedDeclaration": 118,
+                              "type": "string storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 150,
+                                  "type": "struct RegistrationContract.RegistrationData storage pointer",
+                                  "value": "newRegistration"
+                                },
+                                "id": 167,
+                                "name": "Identifier",
+                                "src": "905:15:2"
+                              }
+                            ],
+                            "id": 169,
+                            "name": "MemberAccess",
+                            "src": "905:26:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 139,
+                              "type": "string memory",
+                              "value": "_nationalId"
+                            },
+                            "id": 170,
+                            "name": "Identifier",
+                            "src": "934:11:2"
+                          }
+                        ],
+                        "id": 171,
+                        "name": "Assignment",
+                        "src": "905:40:2"
+                      }
+                    ],
+                    "id": 172,
+                    "name": "ExpressionStatement",
+                    "src": "905:40:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "constituency",
+                              "referencedDeclaration": 120,
+                              "type": "string storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 150,
+                                  "type": "struct RegistrationContract.RegistrationData storage pointer",
+                                  "value": "newRegistration"
+                                },
+                                "id": 173,
+                                "name": "Identifier",
+                                "src": "956:15:2"
+                              }
+                            ],
+                            "id": 175,
+                            "name": "MemberAccess",
+                            "src": "956:28:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 141,
+                              "type": "string memory",
+                              "value": "_constituency"
+                            },
+                            "id": 176,
+                            "name": "Identifier",
+                            "src": "987:13:2"
+                          }
+                        ],
+                        "id": 177,
+                        "name": "Assignment",
+                        "src": "956:44:2"
+                      }
+                    ],
+                    "id": 178,
+                    "name": "ExpressionStatement",
+                    "src": "956:44:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "registrationCenter",
+                              "referencedDeclaration": 122,
+                              "type": "string storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 150,
+                                  "type": "struct RegistrationContract.RegistrationData storage pointer",
+                                  "value": "newRegistration"
+                                },
+                                "id": 179,
+                                "name": "Identifier",
+                                "src": "1011:15:2"
+                              }
+                            ],
+                            "id": 181,
+                            "name": "MemberAccess",
+                            "src": "1011:34:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 143,
+                              "type": "string memory",
+                              "value": "_registrationCenter"
+                            },
+                            "id": 182,
+                            "name": "Identifier",
+                            "src": "1048:19:2"
+                          }
+                        ],
+                        "id": 183,
+                        "name": "Assignment",
+                        "src": "1011:56:2"
+                      }
+                    ],
+                    "id": 184,
+                    "name": "ExpressionStatement",
+                    "src": "1011:56:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 133,
+                              "type": "function (uint256)",
+                              "value": "RegistrationAdded"
+                            },
+                            "id": 185,
+                            "name": "Identifier",
+                            "src": "1085:17:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 129,
+                              "type": "uint256",
+                              "value": "registrationCount"
+                            },
+                            "id": 186,
+                            "name": "Identifier",
+                            "src": "1103:17:2"
+                          }
+                        ],
+                        "id": 187,
+                        "name": "FunctionCall",
+                        "src": "1085:36:2"
+                      }
+                    ],
+                    "id": 188,
+                    "name": "EmitStatement",
+                    "src": "1080:41:2"
+                  }
+                ],
+                "id": 189,
+                "name": "Block",
+                "src": "684:445:2"
+              }
+            ],
+            "id": 190,
+            "name": "FunctionDefinition",
+            "src": "461:668:2"
+          }
+        ],
+        "id": 191,
+        "name": "ContractDefinition",
+        "src": "69:1063:2"
+      }
+    ],
+    "id": 192,
+    "name": "SourceUnit",
+    "src": "33:1099:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xe018a353490d5F5E0D745942B97Df7a19d57e077",
+      "transactionHash": "0x8174c57261c1cedfaf45c293403ccef47cafa4a1430f35c4134198f6b8264f1d"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-02-08T17:43:10.812Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
